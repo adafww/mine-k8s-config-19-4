@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-server
+  template:
+    metadata:
+      labels:
+        app: minecraft-server
+    spec:
+      containers:
+        - name: minecraft
+          image: itzg/minecraft-server
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - name: data-volume
+              mountPath: /data
+            - name: mods-volume
+              mountPath: /mods
+          env:
+            - name: EULA
+              value: "true"
+            - name: TYPE
+              value: "FORGE"
+            - name: VERSION
+              value: "1.19.4"
+            - name: DEBUG
+              value: "true"
+            - name: SETUP_ONLY
+              value: "false"
+            - name: ONLINE_MODE
+              value: "false"
+      volumes:
+        - name: data-volume
+          hostPath:
+            path: /mine-data/data
+        - name: mods-volume
+          hostPath:
+            path: /mine-data/mods
