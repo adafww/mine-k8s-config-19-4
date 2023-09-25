@@ -28,7 +28,7 @@ spec:
             - name: TYPE
               value: "FORGE"
             - name: VERSION
-              value: "1.19.4"
+              value: "1.19.2"
             - name: DEBUG
               value: "true"
             - name: SETUP_ONLY
