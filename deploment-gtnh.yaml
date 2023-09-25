@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server-gtnh
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-server-gtnh
+  template:
+    metadata:
+      labels:
+        app: minecraft-server-gtnh
+    spec:
+      containers:
+        - name: minecraft-gtnh
+          image: adafww/minecraft-server-gtnh:latest
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - name: data-volume
+              mountPath: /app/World
+      volumes:
+        - name: data-volume
+          hostPath:
+            path: /mine-data-gtnh

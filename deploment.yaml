@@ -35,6 +35,10 @@ spec:
               value: "false"
             - name: ONLINE_MODE
               value: "false"
+            - name: MEMORY
+              value: 2G
+            - name: ALLOW_FLIGHT
+              value: "true"
       volumes:
         - name: data-volume
           hostPath:
