@@ -19,7 +19,9 @@ spec:
             - containerPort: 25565
           volumeMounts:
             - name: data-volume
-              mountPath: /app
+              mountPath: /app/World
+            - name: data-journeymap-volume
+              mountPath: /app/config/JourneyMapServer
           command: ["/bin/sh", "-c"]
           args:
             - |
@@ -41,4 +43,7 @@ spec:
       volumes:
         - name: data-volume
           hostPath:
-            path: /mine-gtnh
+            path: /minegtnh/World
+        - name: data-journeymap-volume
+          hostPath:
+            path: /minegtnh/JourneyMapServer
