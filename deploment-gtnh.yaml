@@ -37,9 +37,9 @@ spec:
                   done
                   echo "Rebooting now!"
               done
-          resources:
-            limits:
-              memory: 4Gi
+#          resources:
+#            limits:
+#              memory: 4Gi
       volumes:
         - name: data-volume
           hostPath:
